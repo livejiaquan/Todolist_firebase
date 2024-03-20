@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO list</title>   
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js">
+    
+</script>
+    <div class="wrapper">
+        <header>Todo list</header>
+
+        <div class="inputField">
+            <input type="text" placeholder="Add your new todo">
+            <button><i class="fas fa-plus"></i></button>
+        </div>
+        <ul class="todoList">
+            <!-- <li>Buy a gaming laptop <span><i class="fas fa-trash"></i></span></li> -->
+        </ul>
+        <div class="footer">
+            <span>You have <span class="pendingTasks"></span> pending tasks</span>
+            <button>Clear All</button>
+        </div>
+    </div>
+    <button class="logout">Logout</button>
+ 
+    <script src="index.js"></script>
+    <script>
+        var logoutbtn = document.querySelector('.logout');
+        
+        logoutbtn.onclick = function(){
+        firebase.auth().signOut()
+        .then(function() {
+            // 登出後強制重整一次頁面
+            window.location.href='login.html';
+            //window.location.reload();
+        }).catch(function(error) {
+            console.log(error.message)
+        });
+        }
+    </script>
+    
+</body>
+</html>
